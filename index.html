@@ -5,186 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>סולאריום אנרגיה - Solarium Energy</title>
     <style>
-        :root {
-            --primary: #1a365d;
-            --accent: #f6ad55;
-            --bg: #f8f9fa;
-        }
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            background-color: var(--bg); 
-            color: #333;
-            scroll-behavior: smooth;
-        }
+        :root { --primary: #1a365d; --accent: #f6ad55; --bg: #f8f9fa; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); direction: rtl; text-align: right; line-height: 1.6; }
         
-        /* לוגו קבוע בצד ימין */
-        .fixed-logo {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            width: 120px;
-            height: auto;
-            background: white;
-            padding: 10px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
+        .fixed-logo { position: fixed; top: 20px; right: 20px; z-index: 1000; width: 120px; background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        header { background: var(--primary); color: white; padding: 60px 20px; text-align: center; }
+        
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
-        header {
-            background: var(--primary);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        header h1 { font-size: 3rem; margin: 0; }
-        header p { font-size: 1.3rem; opacity: 0.9; margin-top: 10px; }
+        /* אזור מי אנחנו */
+        .about-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-        .hero-section {
-            max-width: 1000px;
-            margin: -40px auto 40px;
-            padding: 0 20px;
-        }
-        #hero-media {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            background: #ddd;
-        }
+        /* אזור פרויקטים מתחלפים בצד שמאל */
+        .projects-sidebar { position: relative; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        .projects-sidebar h3 { margin-top: 0; color: var(--primary); }
+        #slideshow-container { width: 100%; height: 350px; border-radius: 10px; overflow: hidden; position: relative; }
+        #slideshow-container img { width: 100%; height: 100%; object-fit: cover; transition: opacity 1s ease-in-out; }
 
-        nav {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .btn-projects {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            padding: 18px 45px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(246, 173, 85, 0.4);
-        }
-        .btn-projects:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(246, 173, 85, 0.5); }
+        /* אזור צור קשר */
+        .contact-section { grid-column: span 2; background: var(--primary); color: white; padding: 40px; border-radius: 15px; text-align: center; }
+        .contact-info { display: flex; justify-content: center; gap: 50px; margin-top: 20px; flex-wrap: wrap; }
+        
+        footer { text-align: center; padding: 20px; background: #eee; margin-top: 40px; }
 
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: none; /* מוסתר בהתחלה */
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-        .card:hover { transform: translateY(-5px); }
-        .card img, .card video { width: 100%; height: 300px; object-fit: cover; }
-
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 40px;
-            margin-top: 60px;
-        }
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .contact-section { grid-column: span 1; } }
     </style>
 </head>
 <body>
 
-    <img src="images/logo.png" alt="Solarium Energy Logo" class="fixed-logo" onerror="this.style.display='none'">
+    <img src="images/logo.png" alt="לוגו" class="fixed-logo">
 
     <header>
         <h1>סולאריום אנרגיה</h1>
-        <p>פתרונות אנרגיה מתקדמים לעתיד ירוק יותר</p>
+        <p>מובילים את המהפכה הסולארית בישראל</p>
     </header>
 
-    <div class="hero-section">
-        <img id="hero-media" src="" alt="פרויקט נבחר">
+    <div class="container">
+        <section class="about-section">
+            <h2>מי אנחנו</h2>
+            <p>חברת סולאריום אנרגיה מתמחה בתכנון, הקמה ותחזוקה של מערכות אנרגיה סולארית מתקדמות. אנו מביאים ניסיון רב שנים ופתרונות טכנולוגיים מהשורה הראשונה למגזר הפרטי והעסקי כאחד.</p>
+            <p>החזון שלנו הוא לאפשר לכל מבנה בישראל לייצר אנרגיה נקייה, חסכונית ועצמאית.</p>
+        </section>
+
+        <section class="projects-sidebar">
+            <h3>פרויקטים שלנו ברחבי הארץ</h3>
+            <div id="slideshow-container">
+                <img id="project-slide" src="" alt="פרויקט">
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>צור קשר</h2>
+            <p>נשמח לעמוד לשירותכם ולייעץ לכם על המערכת המתאימה ביותר עבורכם.</p>
+            <div class="contact-info">
+                <div><strong>טלפון:</strong> 05X-XXXXXXX</div>
+                <div><strong>אימייל:</strong> office@solarium.co.il</div>
+                <div><strong>כתובת:</strong> ישראל</div>
+            </div>
+        </section>
     </div>
 
-    <nav>
-        <button class="btn-projects" onclick="revealGallery()">לצפייה בפרויקטים שלנו</button>
-    </nav>
-
-    <main id="gallery" class="gallery-container">
-        </main>
-
     <footer>
-        <p>© 2026 Solarium Energy Ltd | איכות, אמינות ושירות מעל הכל</p>
+        <p>© 2026 Solarium Energy Ltd | איכות ואמינות באנרגיה</p>
     </footer>
 
     <script>
-        const user = 'shemtov';
-        const repo = 'Solarium-website';
-        const folder = 'images';
+        const user = 'shemtov', repo = 'Solarium-website', folder = 'images';
+        let images = [];
+        let currentIndex = 0;
 
-        async function loadContent() {
+        async function loadProjects() {
             try {
-                // סריקה אוטומטית של התיקייה ב-GitHub
                 const res = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`);
                 const files = await res.json();
                 
-                const gallery = document.getElementById('gallery');
-                const hero = document.getElementById('hero-media');
+                // סינון תמונות בלבד (ללא הלוגו ובדיקה של אותיות גדולות/קטנות)
+                images = files.filter(f => 
+                    f.name.toLowerCase() !== 'logo.png' && 
+                    f.name.toLowerCase().match(/\.(jpg|jpeg|png)$/i)
+                ).map(f => f.download_url);
 
-                // סינון קבצים (רק תמונות ווידאו, ללא הלוגו)
-                const mediaFiles = files.filter(f => 
-                    f.name !== 'logo.png' && 
-                    f.name.match(/\.(jpg|jpeg|png|mp4)$/i)
-                );
-
-                // הגדרת ה-Hero (תמונה ראשונה אקראית)
-                const randomImg = mediaFiles.filter(f => !f.name.endsWith('.mp4'));
-                if(randomImg.length > 0) {
-                    hero.src = randomImg[Math.floor(Math.random() * randomImg.length)].download_url;
+                if (images.length > 0) {
+                    updateSlide();
+                    setInterval(nextSlide, 4000); // החלפת תמונה כל 4 שניות
                 }
-
-                // בניית הגלריה
-                mediaFiles.forEach(file => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-
-                    let element;
-                    if (file.name.endsWith('.mp4')) {
-                        element = document.createElement('video');
-                        element.controls = true;
-                        element.muted = true;
-                    } else {
-                        element = document.createElement('img');
-                        element.loading = "lazy";
-                    }
-                    
-                    element.src = file.download_url;
-                    card.appendChild(element);
-                    gallery.appendChild(card);
-                });
-
-            } catch (err) {
-                console.error("שגיאה בסריקת קבצים:", err);
-            }
+            } catch (e) { console.error("שגיאה בטעינת פרויקטים:", e); }
         }
 
-        function revealGallery() {
-            const gallery = document.getElementById('gallery');
-            gallery.style.display = 'grid'; // חשיפת הגלריה
+        function updateSlide() {
+            const slide = document.getElementById('project-slide');
+            slide.style.opacity = 0;
             setTimeout(() => {
-                gallery.scrollIntoView({ behavior: 'smooth' });
-            }, 50);
+                slide.src = images[currentIndex];
+                slide.style.opacity = 1;
+            }, 500);
         }
 
-        loadContent();
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateSlide();
+        }
+
+        loadProjects();
     </script>
 </body>
 </html>
