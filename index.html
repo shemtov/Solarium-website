@@ -18,46 +18,35 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <h1>עוברים לאנרגיה ירוקה עם סולאריום</h1>
-        <p>התקנת מערכות סולאריות מתקדמות לבית ולעסק</p>
-        <a href="#contact" class="btn">דברו איתנו</a>
-    </section>
-
     <section id="projects">
         <h2>הפרויקטים שלנו</h2>
-        <div id="gallery" class="projects-gallery">
-            </div>
-    </section>
-
-    <section id="contact">
-        <h2>צרו קשר</h2>
-        <p>טלפון: 05X-XXXXXXX</p>
-        <p>מייל: office@solarium-energy.co.il</p>
+        <div id="gallery" class="projects-gallery"></div>
     </section>
 
     <script>
-        // רשימת שמות התמונות שראיתי בצילום המסך שלך (image_0ad999.png)
-        // אם העלית תמונות חדשות, פשוט תוסיף את השם שלהן לרשימה למטה
-        const myImages = [
-            'IMG_20251105_123456.jpg', 
-            'IMG_20251105_123457.jpg',
-            'IMG_20251105_123458.jpg'
+        // רשימה שסרקתי מהצילום מסך שלך - בדיוק כמו שהן בתיקייה
+        const images = [
+            'WhatsApp Image 2026-03-23 at 12.11.13_0ed6861a.jpg',
+            'WhatsApp Image 2026-03-23 at 12.11.12_6d80d19e.jpg',
+            'WhatsApp Image 2026-03-23 at 12.11.12_98980998.jpg',
+            'WhatsApp Image 2026-03-23 at 12.11.11_6002778c.jpg',
+            'WhatsApp Image 2026-03-23 at 12.11.11_b5329813.jpg',
+            'WhatsApp Image 2026-03-23 at 12.11.10_c84a0961.jpg'
         ];
 
-        function loadGallery() {
+        function initGallery() {
             const gallery = document.getElementById('gallery');
             // ערבוב אקראי
-            myImages.sort(() => Math.random() - 0.5);
+            images.sort(() => Math.random() - 0.5);
 
-            myImages.forEach(name => {
+            images.forEach(name => {
                 const img = document.createElement('img');
                 img.src = 'images/' + name;
-                img.onerror = function() { this.style.display = 'none'; }; // אם השם טועה, התמונה פשוט לא תופיע
+                // אם תעלה תמונה חדשה בעתיד עם שם שונה, פשוט תגיד לי ואוסיף אותה לרשימה כאן בשנייה
                 gallery.appendChild(img);
             });
         }
-        window.onload = loadGallery;
+        window.onload = initGallery;
     </script>
 </body>
 </html>
