@@ -4,53 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solarium Energy - גלריית פרויקטים</title>
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* הוספתי קצת עיצוב בסיסי כדי שהתמונות לא יהיו ענקיות */
-        .gallery-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            padding: 20px;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f8f9fa; color: #333; }
+        header { background: #1a365d; color: white; text-align: center; padding: 2.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-size: 2.2rem; }
+        .gallery-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            padding: 40px; 
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .gallery-container img {
-            max-width: 300px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        .gallery-container img, .gallery-container video { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 12px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            background-color: #000;
         }
+        .gallery-container img:hover, .gallery-container video:hover { transform: scale(1.03); }
     </style>
 </head>
 <body>
-    <header style="text-align: center; padding: 20px; background-color: #1a365d; color: white;">
+    <header>
         <h1>Solarium Energy - סולאריום אנרגיה</h1>
     </header>
 
-    <main>
-        <div id="gallery" class="gallery-container">
-            </div>
-    </main>
+    <main id="gallery" class="gallery-container">
+        </main>
 
     <script>
-        // רשימה מדויקת ללא תיקיית images - הקבצים נמצאים בתיקייה הראשית
-        const images = [
-            "20231215_080729.jpg",
-            "20250109_082326.jpg",
-            "IMG-20220522-WA0003.jpg",
-            "IMG-20250106-WA0001.jpeg",
-            "IMG-20250109-WA0003.jpeg",
-            "IMG_20200423_113905.jpg"
+        // הרשימה המעודכנת הכוללת את הנתיב לתיקיית images
+        const mediaFiles = [
+            "images/20231215_080729.jpg",
+            "images/20250109_082326.jpg",
+            "images/IMG-20250106-WA0001.jpeg",
+            "images/IMG-20250109-WA0003.jpeg",
+            "images/IMG_20200423_113905.jpg",
+            "images/VID_20210110_142939.mp4"
         ];
 
         const gallery = document.getElementById('gallery');
 
-        images.forEach(image => {
-            const imgElement = document.createElement('img');
-            imgElement.src = image; // הנתיב הישיר לקובץ
-            imgElement.alt = "פרויקט סולאריום";
-            imgElement.onerror = function() { this.style.display = 'none'; }; // מסתיר תמונה אם יש שגיאה
-            gallery.appendChild(imgElement);
+        mediaFiles.forEach(file => {
+            let element;
+            
+            if (file.endsWith('.mp4')) {
+                element = document.createElement('video');
+                element.src = file;
+                element.controls = true;
+                element.muted = true;
+                element.playsinline = true;
+            } else {
+                element = document.createElement('img');
+                element.src = file;
+                element.alt = "פרויקט סולאריום";
+                element.loading = "lazy";
+            }
+            
+            element.onerror = () => console.error("שגיאה בטעינת: " + file);
+            gallery.appendChild(element);
         });
     </script>
 </body>
