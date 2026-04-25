@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>סולאריום אנרגיה - פתרונות אנרגיה סולארית</title>
+    <title>סולאריום אנרגיה - פרויקטים</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,8 +27,7 @@
     <section id="projects">
         <h2>הפרויקטים שלנו</h2>
         <div id="gallery" class="projects-gallery">
-            <p id="loading">טוען פרויקטים...</p>
-        </div>
+            </div>
     </section>
 
     <section id="contact">
@@ -42,38 +41,28 @@
     </footer>
 
     <script>
-        async function loadSmartGallery() {
+        async function loadGallery() {
             const gallery = document.getElementById('gallery');
-            const loadingText = document.getElementById('loading');
-            
             try {
-                // הקוד פונה ל-GitHub ושואל מה יש בתיקייה images
+                // פנייה ל-GitHub כדי לקבל את רשימת הקבצים בתיקייה
                 const response = await fetch('https://api.github.com/repos/shemtov/Solarium-website/contents/images');
-                const data = await response.json();
+                const files = await response.json();
                 
-                // מסננים רק קבצי תמונות (jpg, png, jpeg)
-                let images = data.filter(file => 
-                    file.name.match(/\.(jpg|jpeg|png|gif)$/i)
-                );
-
-                // מערבבים את התמונות בצורה אקראית
+                // סינון רק של תמונות וערבוב אקראי
+                let images = files.filter(file => file.name.match(/\.(jpg|jpeg|png|webp)$/i));
                 images.sort(() => Math.random() - 0.5);
 
-                loadingText.style.display = 'none';
-
                 images.forEach(file => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = file.download_url; // הכתובת הישירה של התמונה
-                    imgElement.alt = "פרויקט סולאריום";
-                    imgElement.loading = "lazy"; // טעינה חכמה שחוסכת גלישה
-                    gallery.appendChild(imgElement);
+                    const img = document.createElement('img');
+                    img.src = file.download_url;
+                    img.alt = "פרויקט סולאריום";
+                    gallery.appendChild(img);
                 });
-            } catch (error) {
-                console.error("Error loading images:", error);
-                loadingText.innerText = "שגיאה בטעינת התמונות.";
+            } catch (e) {
+                console.error("טעינת הגלריה נכשלה", e);
             }
         }
-        window.onload = loadSmartGallery;
+        window.onload = loadGallery;
     </script>
 </body>
 </html>
