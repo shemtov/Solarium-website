@@ -3,50 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>סולאריום אנרגיה</title>
+    <title>Solarium Energy - גלריית פרויקטים</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">Solarium Energy</div>
-            <ul>
-                <li><a href="#home">בית</a></li>
-                <li><a href="#projects">פרויקטים</a></li>
-                <li><a href="#contact">צור קשר</a></li>
-            </ul>
-        </nav>
+        <h1>Solarium Energy - סולאריום אנרגיה</h1>
     </header>
 
-    <section id="projects">
-        <h2>הפרויקטים שלנו</h2>
-        <div id="gallery" class="projects-gallery"></div>
-    </section>
+    <main>
+        <div id="gallery" class="gallery-container">
+            </div>
+    </main>
 
     <script>
-        // רשימה שסרקתי מהצילום מסך שלך - בדיוק כמו שהן בתיקייה
+        // רשימת התמונות המעודכנת הכוללת את הנתיב לתיקיית images
         const images = [
-            'WhatsApp Image 2026-03-23 at 12.11.13_0ed6861a.jpg',
-            'WhatsApp Image 2026-03-23 at 12.11.12_6d80d19e.jpg',
-            'WhatsApp Image 2026-03-23 at 12.11.12_98980998.jpg',
-            'WhatsApp Image 2026-03-23 at 12.11.11_6002778c.jpg',
-            'WhatsApp Image 2026-03-23 at 12.11.11_b5329813.jpg',
-            'WhatsApp Image 2026-03-23 at 12.11.10_c84a0961.jpg'
+            "images/20231215_080729.jpg",
+            "images/20250109_082326.jpg",
+            "images/IMG-20220522-WA0003.jpg",
+            "images/IMG-20250106-WA0001.jpeg",
+            "images/IMG-20250109-WA0003.jpeg",
+            "images/IMG_20200423_113905.jpg"
         ];
 
-        function initGallery() {
-            const gallery = document.getElementById('gallery');
-            // ערבוב אקראי
-            images.sort(() => Math.random() - 0.5);
+        const gallery = document.getElementById('gallery');
 
-            images.forEach(name => {
-                const img = document.createElement('img');
-                img.src = 'images/' + name;
-                // אם תעלה תמונה חדשה בעתיד עם שם שונה, פשוט תגיד לי ואוסיף אותה לרשימה כאן בשנייה
-                gallery.appendChild(img);
-            });
-        }
-        window.onload = initGallery;
+        images.forEach(image => {
+            const imgElement = document.createElement('img');
+            imgElement.src = image;
+            imgElement.alt = "פרויקט סולאריום";
+            imgElement.loading = "lazy";
+            gallery.appendChild(imgElement);
+        });
     </script>
 </body>
 </html>
