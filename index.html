@@ -6,108 +6,78 @@
     <title>סולאריום אנרגיה - Solarium Energy</title>
     <style>
         :root { --primary: #1a365d; --accent: #f6ad55; --bg: #f8f9fa; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); direction: rtl; text-align: right; line-height: 1.6; }
-        
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--bg); direction: rtl; text-align: right; }
         .fixed-logo { position: fixed; top: 20px; right: 20px; z-index: 1000; width: 120px; background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        
         header { background: var(--primary); color: white; padding: 60px 20px; text-align: center; }
-        
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-
-        /* אזור מי אנחנו */
-        .about-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-
-        /* אזור פרויקטים מתחלפים בצד שמאל */
-        .projects-sidebar { position: relative; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
-        .projects-sidebar h3 { margin-top: 0; color: var(--primary); }
-        #slideshow-container { width: 100%; height: 350px; border-radius: 10px; overflow: hidden; position: relative; }
-        #slideshow-container img { width: 100%; height: 100%; object-fit: cover; transition: opacity 1s ease-in-out; }
-
-        /* אזור צור קשר */
-        .contact-section { grid-column: span 2; background: var(--primary); color: white; padding: 40px; border-radius: 15px; text-align: center; }
-        .contact-info { display: flex; justify-content: center; gap: 50px; margin-top: 20px; flex-wrap: wrap; }
-        
-        footer { text-align: center; padding: 20px; background: #eee; margin-top: 40px; }
-
-        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .contact-section { grid-column: span 1; } }
+        .main-content { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .projects-side h3 { color: var(--primary); margin-top: 0; text-align: center; }
+        .slideshow { width: 100%; height: 400px; border-radius: 15px; overflow: hidden; background: #eee; position: relative; }
+        .slideshow img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.8s ease-in-out; }
+        .contact-footer { background: var(--primary); color: white; padding: 50px 20px; text-align: center; margin-top: 50px; }
+        .contact-details { display: flex; justify-content: center; gap: 40px; margin-top: 20px; flex-wrap: wrap; }
+        @media (max-width: 768px) { .main-content { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
-    <img src="images/logo.png" alt="לוגו" class="fixed-logo">
-
+    <img src="images/logo.png" alt="Solarium Energy" class="fixed-logo">
     <header>
         <h1>סולאריום אנרגיה</h1>
         <p>מובילים את המהפכה הסולארית בישראל</p>
     </header>
-
-    <div class="container">
-        <section class="about-section">
+    <div class="main-content">
+        <section class="card">
             <h2>מי אנחנו</h2>
             <p>חברת סולאריום אנרגיה מתמחה בתכנון, הקמה ותחזוקה של מערכות אנרגיה סולארית מתקדמות. אנו מביאים ניסיון רב שנים ופתרונות טכנולוגיים מהשורה הראשונה למגזר הפרטי והעסקי כאחד.</p>
-            <p>החזון שלנו הוא לאפשר לכל מבנה בישראל לייצר אנרגיה נקייה, חסכונית ועצמאית.</p>
+            <p>אנו מחויבים לאיכות ללא פשרות, שירות אישי וליווי צמוד לאורך כל הדרך - מהתכנון ועד לחיבור לרשת.</p>
         </section>
-
-        <section class="projects-sidebar">
+        <section class="card projects-side">
             <h3>פרויקטים שלנו ברחבי הארץ</h3>
-            <div id="slideshow-container">
-                <img id="project-slide" src="" alt="פרויקט">
-            </div>
-        </section>
-
-        <section class="contact-section">
-            <h2>צור קשר</h2>
-            <p>נשמח לעמוד לשירותכם ולייעץ לכם על המערכת המתאימה ביותר עבורכם.</p>
-            <div class="contact-info">
-                <div><strong>טלפון:</strong> 05X-XXXXXXX</div>
-                <div><strong>אימייל:</strong> office@solarium.co.il</div>
-                <div><strong>כתובת:</strong> ישראל</div>
+            <div class="slideshow">
+                <img id="slide-img" src="" alt="פרויקט סולאריום">
             </div>
         </section>
     </div>
-
-    <footer>
-        <p>© 2026 Solarium Energy Ltd | איכות ואמינות באנרגיה</p>
-    </footer>
-
+    <section class="contact-footer">
+        <h2>צור קשר</h2>
+        <p>נשמח לייעץ לכם על המערכת המתאימה ביותר עבורכם</p>
+        <div class="contact-details">
+            <div><strong>טלפון:</strong> 052-4466224</div>
+            <div><strong>אימייל:</strong> office@solarium.co.il</div>
+            <div><strong>כתובת:</strong> מושב נווה ימין</div>
+        </div>
+    </section>
     <script>
         const user = 'shemtov', repo = 'Solarium-website', folder = 'images';
         let images = [];
-        let currentIndex = 0;
-
-        async function loadProjects() {
+        let index = 0;
+        async function getFiles() {
             try {
-                const res = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`);
-                const files = await res.json();
-                
-                // סינון תמונות בלבד (ללא הלוגו ובדיקה של אותיות גדולות/קטנות)
-                images = files.filter(f => 
+                const r = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`);
+                const data = await r.json();
+                images = data.filter(f => 
                     f.name.toLowerCase() !== 'logo.png' && 
-                    f.name.toLowerCase().match(/\.(jpg|jpeg|png)$/i)
+                    /\.(jpg|jpeg|png|webp)$/i.test(f.name)
                 ).map(f => f.download_url);
-
-                if (images.length > 0) {
-                    updateSlide();
-                    setInterval(nextSlide, 4000); // החלפת תמונה כל 4 שניות
+                if(images.length > 0) {
+                    showSlide();
+                    setInterval(nextSlide, 3500);
                 }
-            } catch (e) { console.error("שגיאה בטעינת פרויקטים:", e); }
+            } catch (e) { console.error("Error:", e); }
         }
-
-        function updateSlide() {
-            const slide = document.getElementById('project-slide');
-            slide.style.opacity = 0;
+        function showSlide() {
+            const img = document.getElementById('slide-img');
+            img.style.opacity = 0;
             setTimeout(() => {
-                slide.src = images[currentIndex];
-                slide.style.opacity = 1;
-            }, 500);
+                img.src = images[index];
+                img.style.opacity = 1;
+            }, 200);
         }
-
         function nextSlide() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateSlide();
+            index = (index + 1) % images.length;
+            showSlide();
         }
-
-        loadProjects();
+        getFiles();
     </script>
 </body>
 </html>
