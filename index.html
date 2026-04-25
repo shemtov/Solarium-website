@@ -6,26 +6,17 @@
     <title>Solarium Energy - גלריית פרויקטים</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f8f9fa; color: #333; }
-        header { background: #1a365d; color: white; text-align: center; padding: 2.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { margin: 0; font-size: 2.2rem; }
+        header { background: #1a365d; color: white; text-align: center; padding: 2rem; }
         .gallery-container { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 25px; 
-            padding: 40px; 
+            gap: 20px; 
+            padding: 20px; 
             max-width: 1200px;
             margin: 0 auto;
         }
-        .gallery-container img, .gallery-container video { 
-            width: 100%; 
-            height: 300px; 
-            object-fit: cover; 
-            border-radius: 12px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-            background-color: #000;
-        }
-        .gallery-container img:hover, .gallery-container video:hover { transform: scale(1.03); }
+        .item { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        img, video { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body>
@@ -33,41 +24,19 @@
         <h1>Solarium Energy - סולאריום אנרגיה</h1>
     </header>
 
-    <main id="gallery" class="gallery-container">
-        </main>
-
-    <script>
-        // הרשימה המעודכנת הכוללת את הנתיב לתיקיית images
-        const mediaFiles = [
-            "images/20231215_080729.jpg",
-            "images/20250109_082326.jpg",
-            "images/IMG-20250106-WA0001.jpeg",
-            "images/IMG-20250109-WA0003.jpeg",
-            "images/IMG_20200423_113905.jpg",
-            "images/VID_20210110_142939.mp4"
-        ];
-
-        const gallery = document.getElementById('gallery');
-
-        mediaFiles.forEach(file => {
-            let element;
-            
-            if (file.endsWith('.mp4')) {
-                element = document.createElement('video');
-                element.src = file;
-                element.controls = true;
-                element.muted = true;
-                element.playsinline = true;
-            } else {
-                element = document.createElement('img');
-                element.src = file;
-                element.alt = "פרויקט סולאריום";
-                element.loading = "lazy";
-            }
-            
-            element.onerror = () => console.error("שגיאה בטעינת: " + file);
-            gallery.appendChild(element);
-        });
-    </script>
+    <main class="gallery-container">
+        <div class="item"><img src="images/20231215_080729.jpg" alt="פרויקט"></div>
+        <div class="item"><img src="images/20250109_082326.jpg" alt="פרויקט"></div>
+        <div class="item"><img src="images/IMG-20250106-WA0001.jpeg" alt="פרויקט"></div>
+        <div class="item"><img src="images/IMG-20250109-WA0003.jpeg" alt="פרויקט"></div>
+        <div class="item"><img src="images/IMG_20200423_113905.jpg" alt="פרויקט"></div>
+        
+        <div class="item">
+            <video controls muted playsinline>
+                <source src="images/VID_20210110_142939.mp4" type="video/mp4">
+                הדפדפן שלך לא תומך בוידאו.
+            </video>
+        </div>
+    </main>
 </body>
 </html>
