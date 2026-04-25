@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solarium Energy - גלריית פרויקטים</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* הוספתי קצת עיצוב בסיסי כדי שהתמונות לא יהיו ענקיות */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .gallery-container img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <header style="text-align: center; padding: 20px; background-color: #1a365d; color: white;">
         <h1>Solarium Energy - סולאריום אנרגיה</h1>
     </header>
 
@@ -17,23 +33,23 @@
     </main>
 
     <script>
-        // רשימת התמונות המעודכנת הכוללת את הנתיב לתיקיית images
+        // רשימה מדויקת ללא תיקיית images - הקבצים נמצאים בתיקייה הראשית
         const images = [
-            "images/20231215_080729.jpg",
-            "images/20250109_082326.jpg",
-            "images/IMG-20220522-WA0003.jpg",
-            "images/IMG-20250106-WA0001.jpeg",
-            "images/IMG-20250109-WA0003.jpeg",
-            "images/IMG_20200423_113905.jpg"
+            "20231215_080729.jpg",
+            "20250109_082326.jpg",
+            "IMG-20220522-WA0003.jpg",
+            "IMG-20250106-WA0001.jpeg",
+            "IMG-20250109-WA0003.jpeg",
+            "IMG_20200423_113905.jpg"
         ];
 
         const gallery = document.getElementById('gallery');
 
         images.forEach(image => {
             const imgElement = document.createElement('img');
-            imgElement.src = image;
+            imgElement.src = image; // הנתיב הישיר לקובץ
             imgElement.alt = "פרויקט סולאריום";
-            imgElement.loading = "lazy";
+            imgElement.onerror = function() { this.style.display = 'none'; }; // מסתיר תמונה אם יש שגיאה
             gallery.appendChild(imgElement);
         });
     </script>
