@@ -3,76 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>סולאריום אנרגיה | כוח השמש בשירות העסק שלך</title>
+    <title>סולאריום אנרגיה - פתרונות אנרגיה סולארית</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="container header-flex">
-            <div class="logo">SOLARIUM <span>ENERGY</span></div>
-            <nav>
-                <ul>
-                    <li><a href="#home">בית</a></li>
-                    <li><a href="#about">עלינו</a></li>
-                    <li><a href="#projects">פרויקטים</a></li>
-                    <li><a href="#contact">צור קשר</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <div class="logo">Solarium Energy</div>
+            <ul>
+                <li><a href="#home">בית</a></li>
+                <li><a href="#projects">פרויקטים</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
+        </nav>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>אנרגיה חכמה. גג משלם.</h1>
-            <p>סולאריום אנרגיה מתמחה בתכנון והקמת מערכות פוטו-וולטאיות מתקדמות המעניקות תשואה מקסימלית ושקט נפשי לעשרות שנים.</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn btn-primary">קבלת הצעת מחיר</a>
-                <a href="#projects" class="btn btn-secondary">צפייה בפרויקטים</a>
+        <h1>עוברים לאנרגיה ירוקה עם סולאריום</h1>
+        <p>התקנת מערכות סולאריות מתקדמות לבית ולעסק</p>
+        <a href="#contact" class="btn">דברו איתנו</a>
+    </section>
+
+    <section id="projects">
+        <h2>הפרויקטים שלנו</h2>
+        <div id="gallery" class="projects-gallery">
             </div>
-        </div>
     </section>
 
-    <section id="stats" class="container">
-        <div class="stats-grid">
-            <div class="stat-item"><h3>+100</h3><p>פרויקטים בוצעו</p></div>
-            <div class="stat-item"><h3>15MW</h3><p>הספק מותקן</p></div>
-            <div class="stat-item"><h3>100%</h3><p>עמידה בתקנים</p></div>
-        </div>
-    </section>
-
-    <section id="projects" class="bg-light">
-        <div class="container">
-            <h2 class="section-title">פרויקטים נבחרים</h2>
-            <div class="projects-grid">
-                <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=500&q=80')">
-                    <div class="project-overlay"><h3>גג תעשייתי - עמק חפר</h3></div>
-                </div>
-                <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=500&q=80')">
-                    <div class="project-overlay"><h3>מערכת קרקעית - נגב</h3></div>
-                </div>
-                <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=500&q=80')">
-                    <div class="project-overlay"><h3>מבנה מסחרי - מרכז</h3></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="container">
-        <div class="contact-box">
-            <h2>בואו נתחיל לחסוך</h2>
-            <p>השאירו פרטים ומומחה מטעמנו יחזור אליכם עם ניתוח פוטנציאל הגג שלכם.</p>
-            <form>
-                <input type="text" placeholder="שם מלא" required>
-                <input type="tel" placeholder="טלפון" required>
-                <input type="email" placeholder="אימייל">
-                <button type="submit" class="btn btn-primary">שלח בקשה</button>
-            </form>
-        </div>
+    <section id="contact">
+        <h2>צרו קשר</h2>
+        <p>טלפון: 05X-XXXXXXX</p>
+        <p>מייל: office@solarium-energy.co.il</p>
     </section>
 
     <footer>
-        <p>© 2026 סולאריום אנרגיה בע"מ | פתרונות אנרגיה מתחדשת</p>
+        <p>© 2026 סולאריום אנרגיה Ltd. כל הזכויות שמורות.</p>
     </footer>
+
+    <script>
+        function loadAutoGallery() {
+            const gallery = document.getElementById('gallery');
+            let imageFiles = [];
+            for (let i = 1; i <= 20; i++) { imageFiles.push(`${i}.jpg`); }
+            imageFiles.sort(() => Math.random() - 0.5);
+            imageFiles.forEach(fileName => {
+                const img = new Image();
+                img.src = `images/${fileName}`;
+                img.onload = function() {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = this.src;
+                    gallery.appendChild(imgElement);
+                };
+            });
+        }
+        window.onload = loadAutoGallery;
+    </script>
 </body>
 </html>
